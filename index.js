@@ -5,6 +5,7 @@ import  UrlModel from './model.js'
 import  dotenv from 'dotenv'
 dotenv.config()
 const server = express();
+server.set('views', './views');
 server.set("view engine", "ejs");
 server.use(express.json())
 server.use(express.urlencoded({ extended: true }));
