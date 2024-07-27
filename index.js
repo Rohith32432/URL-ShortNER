@@ -3,21 +3,24 @@ import mongoose from 'mongoose';
 import { customAlphabet } from 'nanoid';
 import UrlModel from './model.js';
 import dotenv from 'dotenv';
-dotenv.config();
+import path from 'path'
+import { fileURLToPath } from 'url';
 
+// Setup to get the directory name in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config();
 const server = express();
-server.set('views', './views');
 server.set("view engine", "ejs");
+server.set('views', path.join(__dirname, 'views'));
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
 main().catch(err => console.log('DB Connection Error:', err));
 
 async function main() {
-  console.log(process.env.url);
   try {
     await mongoose.connect(process.env.url);
-
     console.log('DB Connected successfully');
   } catch (err) {
     console.error('DB Connection Error:', err);
