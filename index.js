@@ -68,4 +68,3 @@ server.get('/del/:id', async (req, res) => {
 });
 
 export default server;
-server.listen(3005,()=>{console.log('hi');})
