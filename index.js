@@ -14,8 +14,10 @@ server.use(express.urlencoded({ extended: true }));
 main().catch(err => console.log('DB Connection Error:', err));
 
 async function main() {
+  console.log(process.env.url);
   try {
     await mongoose.connect(process.env.url);
+
     console.log('DB Connected successfully');
   } catch (err) {
     console.error('DB Connection Error:', err);
