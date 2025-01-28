@@ -39,12 +39,19 @@
             <div class="d-flex flex-column flex-md-row align-items-md-center bg-dark text-light p-3 mb-3 rounded gap-3">
                 <img src="https://www.google.com/s2/favicons?domain=<%= shortUrl.fullurl %>&sz=64" alt=""
                     class="img-fluid rounded-circle mx-auto mx-md-0" style="height: 50px; width: 50px;">
-                <div class="overflow-hidden text-center text-md-start">
-                    <a href="<%= shortUrl.shorturl %>" class="d-block text-info text-decoration-none">
-                        <%= shortUrl.shorturl %>
-                    </a>
+                <div class="overflow-hidden flex-grow-1 text-center text-md-start">
+                    <div class="d-flex  justify-content-between justify-content-col-sm-center">
+                        <a href="<%= shortUrl.shorturl %>" class="d-block text-info text-decoration-none">
+                            <%= shortUrl.shorturl %>
+                        </a>
+                        <span class="mx-4 text-secondary">
+
+                            <%= shortUrl?.createdAT.toLocaleDateString() %> - <%= shortUrl?.createdAT.toLocaleTimeString() %>
+                        </span>
+
+                    </div>
                     <a href="<%= shortUrl.fullurl %>" class="d-block text-light text-decoration-none">
-                        <%= shortUrl.fullurl.substring(0, 50) %>
+                        <%= shortUrl.fullurl.substring(0, 100) %>
                     </a>
                 </div>
                 <a href="/del/<%= shortUrl.shorturl %>" class="mt-2 mt-md-0 ms-auto">

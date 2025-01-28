@@ -30,7 +30,7 @@ async function main() {
 server.get('/', async (req, res) => {
   try {
     const shortUrls = await UrlModel.find();
-    res.render('index', { shortUrls: shortUrls });
+    res.render('index', { shortUrls: shortUrls.reverse() });
   } catch (err) {
     console.error('Error fetching short URLs:', err);
     res.status(500).send('Server Error');
